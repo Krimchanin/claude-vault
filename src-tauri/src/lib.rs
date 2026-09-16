@@ -8,6 +8,7 @@ use std::{
     time::UNIX_EPOCH,
 };
 use tauri::{AppHandle, Manager};
+mod profiles;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
@@ -470,6 +471,7 @@ fn scan_sessions(app: AppHandle) -> Result<ScanResult, String> {
 
 #[tauri::command]
 fn sync_cache(app: AppHandle) -> Result<SyncResult, String> {
+    let _lock = profiles::PROFILE_LOCK.lock().map_err(|e| e.to_string())?;
     let root = claude_root(&app)?.join("claude-code-sessions");
     let destination = archive_root(&app)?;
     fs::create_dir_all(&destination).map_err(|e| e.to_string())?;
@@ -496,6 +498,7 @@ fn sync_cache(app: AppHandle) -> Result<SyncResult, String> {
 
 #[tauri::command]
 fn restore_missing(app: AppHandle) -> Result<RestoreResult, String> {
+    let _lock = profiles::PROFILE_LOCK.lock().map_err(|e| e.to_string())?;
     let source = archive_root(&app)?;
     let target_root = claude_root(&app)?.join("claude-code-sessions");
     let metadata = copy_tree(&source.join("metadata"), &target_root, false)?;
@@ -539,7 +542,13 @@ pub fn run() {
             restore_missing,
             load_transcript,
             get_settings,
-            save_settings
+            save_settings,
+            profiles::list_profiles,
+            profiles::create_profile,
+            profiles::open_claude,
+            profiles::switch_profile,
+            profiles::recover_account,
+            profiles::get_account_state
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

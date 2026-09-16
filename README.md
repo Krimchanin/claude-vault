@@ -44,6 +44,8 @@ Claude Vault mirrors Claude's original files instead of converting conversations
 
 ## What it does
 
+- Experimental Windows account switching: save the current account, quit Claude, then swap to another saved account from Vault. See [account switching](docs/accounts.md) for setup, security, and recovery details.
+
 - Detects Claude Desktop data in both classic and Microsoft Store installation locations on Windows.
 - Lists locally available sessions with titles, dates, sizes, and turn counts.
 - Opens the complete user/assistant transcript for sessions that have matching JSONL history.

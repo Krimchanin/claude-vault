@@ -1,7 +1,7 @@
 {
   "name": "claude-vault",
   "private": true,
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Keep Claude Desktop chats safe when switching accounts.",
   "repository": "https://github.com/krimchanin/claude-vault",
   "homepage": "https://github.com/krimchanin/claude-vault#readme",

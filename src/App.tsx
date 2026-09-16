@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { Accounts } from "@/components/accounts";
 import { invoke } from "@tauri-apps/api/core";
 import { AnimatePresence, motion } from "motion/react";
 import {
@@ -363,6 +364,7 @@ export default function App() {
             </div>
           </div>
           <div className="flex">
+            <Accounts language={lang} />
             <Button
               variant="ghost"
               size="icon"

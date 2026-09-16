@@ -1,6 +1,6 @@
 [package]
 name = "claude-vault"
-version = "0.2.0"
+version = "0.3.0"
 description = "Local backup and restore utility for Claude Desktop sessions"
 authors = ["Claude Vault contributors"]
 license = "MIT"

@@ -14,6 +14,9 @@ src-tauri/target
 *.local
 .env
 .env.*
+account-profiles/
+Claude-vault-recovery-*/
+Claude-vault-staging-*/
 *.msi
 *-setup.exe
 
