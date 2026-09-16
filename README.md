@@ -1,14 +1,46 @@
-# Claude Vault
+# Never lose your Claude chats when switching accounts
 
 [English](README.md) · [Русский](README.ru.md) · [简体中文](README.zh-CN.md) · [Deutsch](README.de.md) · [Español](README.es.md) · [Français](README.fr.md)
 
 ![Tauri 2](https://img.shields.io/badge/Tauri-2-24C8DB?logo=tauri&logoColor=white) ![Rust](https://img.shields.io/badge/Rust-backend-000000?logo=rust) ![Local only](https://img.shields.io/badge/privacy-local--only-22c55e) ![MIT](https://img.shields.io/badge/license-MIT-blue)
 
-**Switch Claude accounts without losing your conversation history.** Claude Vault is an unofficial, local-first desktop utility for inspecting, backing up, and restoring Claude Desktop / Claude Code conversation data directly from the filesystem.
+**Claude Vault** keeps an independent, local copy of your Claude Desktop and Claude Code conversations so an account switch cannot make valuable work disappear.
 
 The project is built with Tauri 2, Rust, React, TypeScript, Tailwind CSS, and genuine shadcn-style Radix UI components. It does not use Anthropic's official export flow and does not upload conversation data anywhere.
 
 > This is an independent community project. It is not affiliated with, endorsed by, or supported by Anthropic.
+
+## Download
+
+Choose the installer for your operating system and processor. All files come directly from the latest [GitHub Release](https://github.com/Krimchanin/claude-vault/releases/latest).
+
+| Platform | Recommended download | Alternative |
+| --- | --- | --- |
+| Windows x64 | [Setup `.exe`](https://github.com/Krimchanin/claude-vault/releases/latest/download/Claude.Vault_0.2.0_x64-setup.exe) | [`.msi`](https://github.com/Krimchanin/claude-vault/releases/latest/download/Claude.Vault_0.2.0_x64_en-US.msi) |
+| Windows x86 / 32-bit | [Setup `.exe`](https://github.com/Krimchanin/claude-vault/releases/latest/download/Claude.Vault_0.2.0_x86-setup.exe) | [`.msi`](https://github.com/Krimchanin/claude-vault/releases/latest/download/Claude.Vault_0.2.0_x86_en-US.msi) |
+| Windows ARM64 | [Setup `.exe`](https://github.com/Krimchanin/claude-vault/releases/latest/download/Claude.Vault_0.2.0_arm64-setup.exe) | [`.msi`](https://github.com/Krimchanin/claude-vault/releases/latest/download/Claude.Vault_0.2.0_arm64_en-US.msi) |
+| macOS Apple Silicon | [`.dmg`](https://github.com/Krimchanin/claude-vault/releases/latest/download/Claude.Vault_0.2.0_aarch64.dmg) | [`.app.tar.gz`](https://github.com/Krimchanin/claude-vault/releases/latest/download/Claude.Vault_0.2.0_aarch64.app.tar.gz) |
+| macOS Intel | [`.dmg`](https://github.com/Krimchanin/claude-vault/releases/latest/download/Claude.Vault_0.2.0_x64.dmg) | [`.app.tar.gz`](https://github.com/Krimchanin/claude-vault/releases/latest/download/Claude.Vault_0.2.0_x64.app.tar.gz) |
+| Linux x64 | [`.AppImage`](https://github.com/Krimchanin/claude-vault/releases/latest/download/Claude.Vault_0.2.0_amd64.AppImage) | [`.deb`](https://github.com/Krimchanin/claude-vault/releases/latest/download/Claude.Vault_0.2.0_amd64.deb) · [`.rpm`](https://github.com/Krimchanin/claude-vault/releases/latest/download/Claude.Vault-0.2.0-1.x86_64.rpm) |
+| Linux ARM64 | [`.AppImage`](https://github.com/Krimchanin/claude-vault/releases/latest/download/Claude.Vault_0.2.0_aarch64.AppImage) | [`.deb`](https://github.com/Krimchanin/claude-vault/releases/latest/download/Claude.Vault_0.2.0_arm64.deb) · [`.rpm`](https://github.com/Krimchanin/claude-vault/releases/latest/download/Claude.Vault-0.2.0-1.aarch64.rpm) |
+
+The current builds are unsigned, so Windows SmartScreen or macOS Gatekeeper may display a warning. The complete source and reproducible release workflow are public in this repository.
+
+## How it works
+
+```text
+Claude's local files
+        ↓
+Back up to Claude Vault
+        ↓
+Switch Claude accounts safely
+        ↓
+Restore only files that are missing
+```
+
+Claude Vault mirrors Claude's original files instead of converting conversations into a proprietary database. When restoring, it merges missing data back into the matching Claude folders and leaves every existing file untouched.
+
+> **Private by design:** no cloud, no accounts, no analytics, no telemetry, and no network synchronization. Your raw conversations stay on your computer. Restore never overwrites an existing Claude file.
 
 ## What it does
 
@@ -51,11 +83,11 @@ Build Windows installers with `npm run tauri build`. Tauri writes them under `sr
 
 ## Privacy and limitations
 
-- All operations are local; there are no analytics, accounts, or network synchronization.
+- All conversation operations are local; there are no analytics, accounts, or network synchronization.
 - Claude's internal formats are undocumented and may change in future releases.
 - Restored sessions may require restarting Claude Desktop before they appear.
 - Without a JSONL transcript, metadata can still be preserved and listed, but the full conversation cannot be displayed.
-- This release focuses on Windows. macOS and Linux discovery are not yet implemented or tested.
+- Windows is the currently verified platform. macOS and Linux discovery is implemented but still needs broader real-device testing.
 
 ## Motivation
 
