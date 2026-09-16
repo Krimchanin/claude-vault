@@ -56,6 +56,6 @@ jobs:
             Local-first backup and restore for Claude Desktop conversations.
 
             Choose the installer matching your operating system and CPU architecture. These builds are currently unsigned; your operating system may show a security warning.
-          releaseDraft: true
+          releaseDraft: false
           prerelease: false
           args: --target ${{ matrix.target }}

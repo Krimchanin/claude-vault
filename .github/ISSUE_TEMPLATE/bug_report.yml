@@ -1,0 +1,35 @@
+name: Bug report
+description: Report a reproducible problem without sharing private Claude data.
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for helping improve Claude Vault. Never attach conversations, vaults, or session identifiers.
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      options: [Windows x64, Windows x86, Windows ARM64, macOS Intel, macOS Apple Silicon, Linux x64, Linux ARM64]
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Claude Vault version
+      placeholder: 0.2.0
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Describe the behavior and the steps to reproduce it. Remove all private data.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
