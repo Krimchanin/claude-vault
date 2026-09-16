@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="ru" class="dark" style="background:#171717">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Claude Vault</title>
+    <style>
+      html,body,#root{margin:0;min-height:100%;background:#171717;color:#fafafa}
+      .boot{position:fixed;inset:0;display:grid;place-items:center;font:500 14px system-ui;letter-spacing:-.01em}
+      .boot-inner{display:grid;justify-items:center;gap:16px;animation:boot-in .7s cubic-bezier(.22,1,.36,1) both}
+      .boot-mark{width:46px;height:46px;border:1px solid #343434;border-radius:15px;display:grid;place-items:center;background:#202020;box-shadow:0 12px 40px #0006}
+      .boot-mark:before{content:"";width:16px;height:16px;border:2px solid #f5f5f5;border-top-color:transparent;border-radius:50%;animation:spin .9s linear infinite}
+      .boot span{color:#777;font-size:11px;font-weight:400}
+      @keyframes spin{to{transform:rotate(360deg)}}@keyframes boot-in{from{opacity:0;transform:translateY(8px) scale(.97)}to{opacity:1;transform:none}}
+    </style>
+  </head>
+
+  <body>
+    <div id="root"><div class="boot"><div class="boot-inner"><div class="boot-mark"></div><div>Claude Vault</div><span>Preparing your local archive</span></div></div></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
